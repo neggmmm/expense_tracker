@@ -1,28 +1,30 @@
 # Expense Tracker
 
-A full-stack expense tracking application built with React, Node.js, Express, and MySQL.
+A modern, full-stack expense tracking application with a beautiful dark mode UI, blue and purple accents, and powerful expense management features.
+
+## Screenshots
+
+### Login Page
+![Login Page](./frontend/screenshots/login.png)
+
+### Register Page
+![Register Page](./frontend/screenshots/register.png)
+
+### Dashboard
+![Dashboard](./frontend/screenshots/dashboard.png)
 
 ## Features
 
-- User authentication and authorization
-- Track expenses and income
-- Categorize transactions
-- View expense history and analytics
-- Secure data storage
+- User authentication (JWT)
+- Add, edit, delete, and filter expenses
+- Monthly report with interactive charts
+- Responsive dark mode UI with blue and purple accents
+- Built with React, TailwindCSS, Chart.js, Node.js, Express, Sequelize, MySQL
 
 ## Tech Stack
 
-### Frontend
-- React
-- Modern UI/UX
-- Responsive design
-
-### Backend
-- Node.js
-- Express.js
-- MySQL
-- Sequelize ORM
-- JWT Authentication
+- **Frontend:** React, TailwindCSS, Chart.js, Axios, React Router
+- **Backend:** Node.js, Express, Sequelize, MySQL, JWT
 
 ## Project Structure
 
@@ -39,57 +41,49 @@ expense-tracker/
 ## Getting Started
 
 ### Prerequisites
-
-- Node.js (v14 or higher)
+- Node.js (v16 or v18 recommended)
 - MySQL
-- npm or yarn
+- npm
 
 ### Installation
 
-1. Clone the repository
-```bash
-git clone https://github.com/neggmmm/expense-tracker.git
-cd expense-tracker
-```
-
-2. Install backend dependencies
-```bash
-cd backend
-npm install
-```
-
-3. Install frontend dependencies
-```bash
-cd ../frontend
-npm install
-```
-
-4. Set up environment variables
-- Create a `.env` file in the backend directory
-- Add the following variables:
-  ```
-  DB_HOST=localhost
-  DB_USER=your_mysql_username
-  DB_PASSWORD=your_mysql_password
-  DB_NAME=expense_tracker_db
-  DB_PORT=3306
-  JWT_SECRET=your_jwt_secret
-  PORT=5000
-  ```
-
-5. Start the development servers
-
-Backend:
-```bash
-cd backend
-npm run dev
-```
-
-Frontend:
-```bash
-cd frontend
-npm start
-```
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/yourusername/expense-tracker.git
+   cd expense-tracker
+   ```
+2. **Install backend dependencies**
+   ```bash
+   cd backend
+   npm install
+   ```
+3. **Install frontend dependencies**
+   ```bash
+   cd ../frontend
+   npm install
+   ```
+4. **Set up environment variables**
+   - Create a `.env` file in the backend directory (see `.env.example` if available)
+   - Example:
+     ```
+     DB_HOST=localhost
+     DB_USER=your_mysql_username
+     DB_PASSWORD=your_mysql_password
+     DB_NAME=expense_tracker_db
+     DB_PORT=3306
+     JWT_SECRET=your_jwt_secret
+     PORT=5000
+     ```
+5. **Run the backend**
+   ```bash
+   cd backend
+   npm run dev
+   ```
+6. **Run the frontend**
+   ```bash
+   cd frontend
+   npm start
+   ```
 
 ## Contributing
 
@@ -101,4 +95,4 @@ npm start
 
 ## License
 
-This project is licensed under the MIT License - see the LICENSE file for details. 
+MIT 
