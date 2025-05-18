@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+import api from '../api/axios';
 import { useNavigate } from 'react-router-dom';
 
 export default function Dashboard() {
@@ -10,14 +10,7 @@ export default function Dashboard() {
   useEffect(() => {
     const fetchDashboard = async () => {
       try {
-        const token = localStorage.getItem('token');
-        if (!token) {
-          navigate('/login');
-          return;
-        }
-        const res = await axios.get('http://localhost:5000/api/dashboard', {
-          headers: { Authorization: `Bearer ${token}` }
-        });
+        const res = await api.get('/dashboard');
         setUser(res.data.user);
       } catch (err) {
         setError('Unauthorized. Please login again.');
@@ -28,6 +21,11 @@ export default function Dashboard() {
     fetchDashboard();
   }, [navigate]);
 
+  const handleLogout = () => {
+    localStorage.removeItem('token');
+    navigate('/login');
+  };
+
   return (
     <div>
       <h2>Dashboard</h2>
@@ -35,6 +33,7 @@ export default function Dashboard() {
         <div>
           <p>Welcome, {user.name}!</p>
           <p>Email: {user.email}</p>
+          <button onClick={handleLogout}>Logout</button>
         </div>
       ) : (
         <div>{error || 'Loading...'}</div>
