@@ -1,5 +1,5 @@
 const Expense = require('../models/expense');
-
+const { Op, fn, col, literal } = require('sequelize');
 // Create a new expense
 exports.createExpense = async (req, res) => {
   try {
@@ -20,7 +20,40 @@ exports.createExpense = async (req, res) => {
 // Get all expenses for the logged-in user
 exports.getExpenses = async (req, res) => {
   try {
-    const expenses = await Expense.findAll({ where: { UserId: req.user.id } });
+    const { start, end, category, stats } = req.query;
+    const where = { UserId: req.user.id };
+
+    // Date range filter
+    if (start && end) {
+      where.date = { [Op.between]: [start, end] };
+    } else if (start) {
+      where.date = { [Op.gte]: start };
+    } else if (end) {
+      where.date = { [Op.lte]: end };
+    }
+
+    // Category filter
+    if (category) {
+      where.category = category;
+    }
+
+    // Monthly stats (aggregation)
+    if (stats === 'monthly') {
+      const monthlyStats = await Expense.findAll({
+        where,
+        attributes: [
+          [fn('YEAR', col('date')), 'year'],
+          [fn('MONTH', col('date')), 'month'],
+          [fn('SUM', col('amount')), 'totalAmount']
+        ],
+        group: [literal('YEAR(date)'), literal('MONTH(date)')],
+        order: [[literal('year'), 'DESC'], [literal('month'), 'DESC']]
+      });
+      return res.json(monthlyStats);
+    }
+
+    // Normal fetch
+    const expenses = await Expense.findAll({ where });
     res.json(expenses);
   } catch (error) {
     res.status(400).json({ message: 'Error fetching expenses', error: error.message });
