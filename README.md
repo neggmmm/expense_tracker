@@ -94,5 +94,4 @@ expense-tracker/
 5. Open a Pull Request
 
 ## License
-
-MIT 
+Abdalkareem Negm @2025
