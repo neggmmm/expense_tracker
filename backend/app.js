@@ -3,7 +3,7 @@ const cors = require('cors');
 const { sequelize } = require('./config/database');
 const authRoutes = require('./routes/auth');
 const dashboardRoutes = require('./routes/dashboard');
-
+const expenseRoutes = require('./routes/expenses');
 const app = express();
 
 // Middleware
@@ -14,6 +14,7 @@ app.use(express.urlencoded({ extended: true }));
 // Routes
 app.use('/api/auth', authRoutes);
 app.use('/api/dashboard', dashboardRoutes);
+app.use('/api/expenses', expenseRoutes);
 // Error handling middleware
 app.use((err, req, res, next) => {
   console.error(err.stack);
