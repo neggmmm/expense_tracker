@@ -38,6 +38,34 @@ expense-tracker/
 │   └── seeders/      # Database seeders
 ```
 
+
+## Total Working Hours
+
+### Backend (6 hours)
+| Task                        | Estimated Hours |
+|-----------------------------|-----------------|
+| Project setup & config      | 0.5             |
+| Database models & relations | 1.0             |
+| Authentication (JWT, bcrypt)| 1.0             |
+| Expense endpoints (CRUD)    | 1.5             |
+| Filtering & reporting       | 1.0             |
+| Testing & error handling    | 0.5             |
+| Documentation & cleanup     | 0.5             |
+| **Total**                   | **6.0**         |
+
+### Frontend (4 hours)
+| Task                        | Estimated Hours |
+|-----------------------------|-----------------|
+| Project setup & TailwindCSS | 0.5             |
+| Auth pages (login/register) | 0.5             |
+| Dashboard UI & logic        | 1.0             |
+| Expense management (CRUD)   | 1.0             |
+| Charts & filtering UI       | 0.5             |
+| Polishing & testing         | 0.5             |
+| **Total**                   | **4.0**         |
+
+## Backend
+
 ## Getting Started
 
 ### Prerequisites
